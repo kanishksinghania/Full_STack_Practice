@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+    <script>
+        function uncheck(x){
+            const xhttp = new XMLHttpRequest(); 
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status ==200) {
+                    document.getElementById("message").innerHTML = this.response;
+                }
+            };
+            xhttp.open("GET","welcome.php?name="+x,true);
+            xhttp.send();
+        }
+    </script>
+    <body>
+    <form action="connect.php" method="post">
+        Name: <input type="text" name="name" id="name" onkeyup="uncheck(this.value)"><br>
+        Password: <input type="text" name="password" id="password"><br>
+        Echo: <p name="message" id="message"></p>
+        <input type="submit">
+    </form>
+    </body>
+</html>
